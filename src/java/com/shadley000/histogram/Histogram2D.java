@@ -17,11 +17,11 @@ public class Histogram2D implements Serializable
     {
 
     }
-    
+
     public void put(Object row, Histogram hist)
     {
         histMap.put(row, hist);
-         orderedColumns.addAll(hist.getRows());
+        orderedColumns.addAll(hist.getRows());
     }
 
     public void increment(Object column, Object row, int count)
@@ -54,8 +54,8 @@ public class Histogram2D implements Serializable
     {
         return histMap.get(row);
     }
-    
-     public Histogram removeRow(Object row)
+
+    public Histogram removeRow(Object row)
     {
         return histMap.remove(row);
     }
@@ -63,20 +63,25 @@ public class Histogram2D implements Serializable
     public int getCount(Object row, Object column)
     {
         Histogram hist = getHistogram(row);
-        if(hist==null) return 0;
+        if (hist == null)
+        {
+            return 0;
+        }
         return hist.getCount(column);
     }
 
     public int getRowTotalCount(Object row)
     {
         Histogram hist = getHistogram(row);
-        if(hist==null) return 0;
+        if (hist == null)
+        {
+            return 0;
+        }
         return hist.getTotalCount();
     }
 
     public int getColumnTotalCount(Object column)
     {
-
         int sum = 0;
         for (Iterator<Object> it = histMap.keySet().iterator(); it.hasNext();)
         {
@@ -89,7 +94,8 @@ public class Histogram2D implements Serializable
             }
         }
 
-       return sum;
+        return sum;
     }
+
 
 }

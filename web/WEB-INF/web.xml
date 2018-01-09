@@ -4,9 +4,17 @@
         <servlet-name>A4</servlet-name>
         <servlet-class>com.shadley000.alarms.AlarmServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>JSONAlarmPivotServlet</servlet-name>
+        <servlet-class>com.shadley000.alarms.pages.JSONAlarmPivotServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>A4</servlet-name>
         <url-pattern>/A4</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JSONAlarmPivotServlet</servlet-name>
+        <url-pattern>/JSONAlarmPivotServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
