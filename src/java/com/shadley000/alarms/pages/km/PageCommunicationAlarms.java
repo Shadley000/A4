@@ -17,7 +17,7 @@ public class PageCommunicationAlarms extends Page
 
     static String[] comm_message_types =
     {
-        "Comm", "comm", "Com.", "IO Error", "Feedback fault", "Profibus Error", "RIO: Open loop/Cable break", "IO error", "Input signal error", "Checksum error"
+        "Comm", "comm", "Com.", "IO Error", "Slave","Feedback fault", "Profibus Error", "RIO: Open loop/Cable break", "IO error", "Input signal error", "Checksum error"
     };
 
     public PageCommunicationAlarms()
