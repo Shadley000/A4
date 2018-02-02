@@ -42,6 +42,7 @@
                 Object column = orderedColumnsIterator.next();
                 out.println("<TH id=\"tdaction\">" + column.toString() + "</TH>");
             }
+            out.println("<TH id=\"tdaction\">Total</TH>");
         %>
     </TR>
     <%
@@ -67,6 +68,7 @@
         <TD id="tdtext"><%= alarmTypeBean.getMessageType()%></TD>
         <TD id="tdtext" ><%= alarmTypeBean.getDescription()%></TD>
             <%
+                int rowTotal = 0;
                 for (Iterator<Object> orderedColumnsIterator = orderedColumns.iterator(); orderedColumnsIterator.hasNext();)
                 {
                     Object column = orderedColumnsIterator.next();
@@ -75,9 +77,11 @@
                     if (count > 0)
                     {
                         out.print("" + count);
+                        rowTotal+=count;
                     }
                     out.print("</TD>");
                 }
+                out.println("<TH id=\"tdaction\">"+rowTotal+"</TH>");
             %>
     </TR>
     <%

@@ -100,6 +100,7 @@
                                     out.print("<TH>" + column.toString() + "</TH>");
                                 }
                             %>
+                         <TH>Total</TH> 
                     </TR>
                     <%
                         for (Iterator<Object> rowIterator = orderedRows.iterator(); rowIterator.hasNext();)
@@ -107,6 +108,7 @@
                             //String system = (String) rowIterator.next();
                             AlarmClassification classification = (AlarmClassification) rowIterator.next();
                             Histogram hist = histogram.getHistogram(classification);
+                            int rowTotal = 0;
                     %>
                     <TR>
                         <TD>
@@ -137,7 +139,7 @@
                                     Object column = orderedColumnsIterator.next();
                                     int count = hist.getCount(column);
                                     if (count > 0)
-                                    {
+                                    {   rowTotal += count;
                                         out.print("<TD>" + count + "</TD>");
                                     } else
                                     {
@@ -145,6 +147,7 @@
                                     }
                                 }
                             %>
+                        <TD align="left"><%= rowTotal%></TD>
                     </TR>
                     <%
                         }

@@ -471,6 +471,7 @@ public final class DrawworksLimitChecks_jsp extends org.apache.jasper.runtime.Ht
                 Object column = orderedColumnsIterator.next();
                 out.println("<TH id=\"tdaction\">" + column.toString() + "</TH>");
             }
+            out.println("<TH id=\"tdaction\">Total</TH>");
         
       out.write("\n");
       out.write("    </TR>\n");
@@ -526,6 +527,7 @@ public final class DrawworksLimitChecks_jsp extends org.apache.jasper.runtime.Ht
       out.write("</TD>\n");
       out.write("            ");
 
+                int rowTotal = 0;
                 for (Iterator<Object> orderedColumnsIterator = orderedColumns.iterator(); orderedColumnsIterator.hasNext();)
                 {
                     Object column = orderedColumnsIterator.next();
@@ -534,9 +536,11 @@ public final class DrawworksLimitChecks_jsp extends org.apache.jasper.runtime.Ht
                     if (count > 0)
                     {
                         out.print("" + count);
+                        rowTotal+=count;
                     }
                     out.print("</TD>");
                 }
+                out.println("<TH id=\"tdaction\">"+rowTotal+"</TH>");
             
       out.write("\n");
       out.write("    </TR>\n");

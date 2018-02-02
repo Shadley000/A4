@@ -472,6 +472,7 @@ public final class CommunicationAlarms_jsp extends org.apache.jasper.runtime.Htt
                 Object column = orderedColumnsIterator.next();
                 out.println("<TH id=\"tdaction\">" + column.toString() + "</TH>");
             }
+            out.println("<TH id=\"tdaction\">Total</TH>");
         
       out.write("\n");
       out.write("    </TR>\n");
@@ -527,6 +528,7 @@ public final class CommunicationAlarms_jsp extends org.apache.jasper.runtime.Htt
       out.write("</TD>\n");
       out.write("            ");
 
+                int rowTotal = 0;
                 for (Iterator<Object> orderedColumnsIterator = orderedColumns.iterator(); orderedColumnsIterator.hasNext();)
                 {
                     Object column = orderedColumnsIterator.next();
@@ -535,9 +537,11 @@ public final class CommunicationAlarms_jsp extends org.apache.jasper.runtime.Htt
                     if (count > 0)
                     {
                         out.print("" + count);
+                        rowTotal+=count;
                     }
                     out.print("</TD>");
                 }
+                out.println("<TH id=\"tdaction\">"+rowTotal+"</TH>");
             
       out.write("\n");
       out.write("    </TR>\n");

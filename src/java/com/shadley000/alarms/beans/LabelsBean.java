@@ -106,5 +106,7 @@ public class LabelsBean implements Serializable, ColumnHeaders
 
    public String getCommunicationAlarms() {return "Communication Alarms";}
    public String getOtherAlarms() {return "Other Alarms";}
+
+    public String getAnticollisionByShift() {return "AntiCollsion by Shift";}
    
 }

@@ -529,6 +529,7 @@ public final class AlarmsBySystem_jsp extends org.apache.jasper.runtime.HttpJspB
                                 }
                             
       out.write("\n");
+      out.write("                         <TH>Total</TH> \n");
       out.write("                    </TR>\n");
       out.write("                    ");
 
@@ -537,6 +538,7 @@ public final class AlarmsBySystem_jsp extends org.apache.jasper.runtime.HttpJspB
                             //String system = (String) rowIterator.next();
                             AlarmClassification classification = (AlarmClassification) rowIterator.next();
                             Histogram hist = histogram.getHistogram(classification);
+                            int rowTotal = 0;
                     
       out.write("\n");
       out.write("                    <TR>\n");
@@ -593,7 +595,7 @@ public final class AlarmsBySystem_jsp extends org.apache.jasper.runtime.HttpJspB
                                     Object column = orderedColumnsIterator.next();
                                     int count = hist.getCount(column);
                                     if (count > 0)
-                                    {
+                                    {   rowTotal += count;
                                         out.print("<TD>" + count + "</TD>");
                                     } else
                                     {
@@ -602,6 +604,9 @@ public final class AlarmsBySystem_jsp extends org.apache.jasper.runtime.HttpJspB
                                 }
                             
       out.write("\n");
+      out.write("                        <TD align=\"left\">");
+      out.print( rowTotal);
+      out.write("</TD>\n");
       out.write("                    </TR>\n");
       out.write("                    ");
 

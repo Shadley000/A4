@@ -17,6 +17,7 @@ import com.shadley000.alarms.pages.km.PageFNGTesting;
 import com.shadley000.alarms.pages.km.PageOtherAlarms;
 import com.shadley000.alarms.pages.km.PageTimeOut;
 import com.shadley000.alarms.pages.nov.PageAntiCollision;
+import com.shadley000.alarms.pages.nov.PageAntiCollisionByShift;
 import com.shadley000.alarms.pages.nov.PageDeviation;
 import com.shadley000.alarms.pages.nov.PageDrawworksLimitChecks;
 import com.shadley000.alarms.pages.nov.PageInterlockOverride;
@@ -58,6 +59,7 @@ public class PagesDB
             {
                 pageList.add(new PageBean(SelectableFilter.DISABLE_SELECT_KEY, null));
                 pageList.add(new PageBean(new PageAntiCollision().getName(labelsBean), PageAntiCollision.class));
+                pageList.add(new PageBean(new PageAntiCollisionByShift().getName(labelsBean), PageAntiCollisionByShift.class));
                 pageList.add(new PageBean(new PageDrawworksLimitChecks().getName(labelsBean), PageDrawworksLimitChecks.class));
                 pageList.add(new PageBean(new PageInterlockOverride().getName(labelsBean), PageInterlockOverride.class));
                  pageList.add(new PageBean(new PageDeviation().getName(labelsBean), PageDeviation.class));
