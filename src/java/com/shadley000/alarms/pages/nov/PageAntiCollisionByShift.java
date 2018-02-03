@@ -29,26 +29,38 @@ public class PageAntiCollisionByShift extends Page {
 
         PreparedStatement stmt = AlarmsDB.getACSAlarms(connection, userBean);
         ResultSet rs = stmt.executeQuery();
-        
+
         while (rs.next()) {
             AlarmRecordBean record = new AlarmRecordBean(rs);
             AlarmTypeBean type = new AlarmTypeBean(rs);
             String columnName = TimeBin.findBin(record.getAlarmTime(), TimeBin.DAY);
-           
-            type.setMessageType(df.format(record.getAlarmTime()));
-            histogram.increment(columnName, type, 1);
+            
+            String shift = "";
+            
+            if (type.getSubSystem().equals("ACS")) {
+                shift = "MAIN "+df.format(record.getAlarmTime());
+            } else if (type.getSubSystem().equals("ACS2")) {
+                shift = "AUX "+df.format(record.getAlarmTime());
+            }
+            
+            type.setMessageType(shift);
             
 
             if (type.getDescription().contains("topped")) {
                 AlarmTypeBean typeMachineStop = new AlarmTypeBean();
+                String tagName = type.getSystem() + "_" + type.getSubSystem() + "_" + shift + "_STOP";
+                typeMachineStop.setTagName(tagName);
                 typeMachineStop.setSystem(type.getSystem());
                 typeMachineStop.setSubSystem(type.getSubSystem());
-                typeMachineStop.setMessageType(type.getMessageType());
+                typeMachineStop.setMessageType(shift);
                 typeMachineStop.setPriority(type.getPriority());
-                typeMachineStop.setTagName(type.getSubSystem());
                 typeMachineStop.setDescription("Total Machine Stops");
                 histogram.increment(columnName, typeMachineStop, 1);
-                
+
+            }
+            else
+            {
+                //histogram.increment(columnName, type, 1);
             }
         }
         rs.close();

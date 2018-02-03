@@ -138,6 +138,10 @@ public class AlarmServlet extends HttpServlet implements IConstants
             {
                 session.setAttribute(PARAM_USERBEAN, userBean);
             }
+            else
+            {
+                System.out.println("login failed");
+            }
 
         } else
         {
